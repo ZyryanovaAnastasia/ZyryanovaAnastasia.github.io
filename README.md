@@ -1,1 +1,2 @@
-# ZyryanovaAnastasia.github.io
+Репозиторий для курса "Продвинутый курс Javascript" от geekbrains
+В итоге должнен получиться front-end для интернет-магазина

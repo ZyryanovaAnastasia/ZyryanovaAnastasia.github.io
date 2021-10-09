@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Comfortaa', cursive;
+}
+
+.container {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0px -3px 0px 0px #e4dad2;
+          box-shadow: inset 0px -3px 0px 0px #e4dad2;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background-color: #ab8b72;
+  color: white;
+}
+
+.main_header {
+  padding: 15px 200px 15px;
+  width: 100%;
+  background: #e2dad6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: white;
+}
+
+.main_header-cart_btn {
+  width: 150px;
+}
+
+.main_header-cart_btn:before {
+  content: '\1F6D2';
+}
+
+.product_list {
+  padding: 80px 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.product_list-item {
+  height: 400px;
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #e6e3db;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.product_list-item-img {
+  width: 100%;
+  height: 80%;
+  background: #dabf95;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.product_list-item-img:hover {
+  -webkit-filter: brightness(60%);
+          filter: brightness(60%);
+}
+
+.product_list-item-div_text {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.product_list-item-btn_add {
+  margin: 0 auto;
+  height: 30px;
+  padding: 5px 15px;
+  text-align: center;
+}
+
+.product_list-item:hover {
+  background: #f0e8dd;
+}
+/*# sourceMappingURL=style.css.map */
