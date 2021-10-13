@@ -14,7 +14,7 @@ function makeGETRequest(method, url) {
         xhr.open(method, `${API_URL}${url}`, true);
         xhr.send();
         xhr.onload = () => {
-            resolve(this.products = JSON.parse(xhr.responseText))
+            resolve(JSON.parse(xhr.responseText))
         };
     });
 }
@@ -57,7 +57,6 @@ class ProductList {
     }
 
     getSumPrice() {
-        console.log(this.products.reduce((prev, {price}) => prev + price, 0))
         return this.products.reduce((prev, {price}) => prev + price, 0);
     }
 
