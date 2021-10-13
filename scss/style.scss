@@ -49,9 +49,10 @@ button:hover {
     padding: $top_padding $edge_padding;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 
     &-item {
+        margin: 0 25px 25px;
         height: 400px;
         width: 300px;
         padding: 10px;
