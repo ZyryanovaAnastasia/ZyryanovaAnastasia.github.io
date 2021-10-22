@@ -17,6 +17,7 @@ $top_padding: 80px;
 }
 
 button {
+    width: 150px;
     border: none;
     border-radius: 5px;
     box-shadow: inset 0px -3px 0px 0px #e4dad2;
@@ -37,9 +38,6 @@ button:hover {
     justify-content: space-between;
     color: white;
 
-    &-cart_btn {
-        width: 150px;
-    }
     &-cart_btn:before {
         content: '\1F6D2';
     }
@@ -51,6 +49,21 @@ button:hover {
     flex-wrap: wrap;
     justify-content: center;
 
+    &-filter {
+        width: 100%;
+        padding-bottom: 20px;
+        display: flex;
+        flex-flow: column;
+
+        input, button {
+            margin-left: auto;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 5px;
+        }
+    }
     &-item {
         margin: 0 25px 25px;
         height: 400px;
@@ -85,5 +98,31 @@ button:hover {
     }
     &-item:hover {
         background: #f0e8dd;
+    }
+}
+
+.basket {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-flow: column;
+    background-color: rgba(192, 177, 153, 0.9);
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px 0 0 20px;
+    border-radius: 5px;
+
+    &-title {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    &-item {
+        width: 200px;
+        border: 1px solid #000;
+        margin: 5px;
+        padding: 5px;
     }
 }
