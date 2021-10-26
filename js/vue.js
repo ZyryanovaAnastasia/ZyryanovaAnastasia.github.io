@@ -1,6 +1,6 @@
-const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
-const CATALOG_URL = '/catalogData.json';
-const BASKET_URL = "/getBasket.json ";
+const API_URL = 'http://localhost:8000';
+const CATALOG_URL = '/products.json';
+const BASKET_URL = '/basket.json';
 
 const transformProducts = function(products) {
     return products.map((_Product) => {
@@ -61,7 +61,7 @@ Vue.component('basket-card', {
     },
     mounted: function () {
         service('GET', BASKET_URL).then((products) => {
-            this.basketGoods = transformProducts(products);
+            // this.basketGoods = transformProducts(products);
         })
       },
     template: `
@@ -91,6 +91,7 @@ const app = new Vue({
     data: {
         products: [],
         productsFiltered: [],
+        basket: [],
         basketCardVision: false,
         searchStr: ''
     },
@@ -99,6 +100,10 @@ const app = new Vue({
           const resultProducts = transformProducts(products);
           this.products = resultProducts;
           this.productsFiltered = resultProducts;
+        })
+        makeGETRequest('GET', BASKET_URL).then((products) => {
+            const resultProducts = transformProducts(products);
+            this.basket = resultProducts;
         })
     },
     methods: {

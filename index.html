@@ -20,7 +20,7 @@
                     <span class="basket-title">Корзина</span>
                     <a class="basket-btn_close" @click="closeCard"></a>
                 </template>
-                <basket-goods-item v-for="item in productsFiltered" :item="item"> </basket-goods-item>
+                <basket-goods-item v-for="item in basket" :item="item"> </basket-goods-item>
             </basket-card>
         </header>
         <main class="content">
