@@ -1,9 +1,43 @@
-const PRODUCTS =  [
-    { title: 'Shirt', price: 150 },
-    { title: 'Socks', price: 50 },
-    { title: 'Jacket', price: 350 },
-    { title: 'Shoes', price: 250 },
-]
+const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+const CATALOG_URL = '/catalogData.json';
+const BASKET_URL = "/getBasket.json ";
+
+const transformProducts = function(products) {
+    return products.map((_Product) => {
+      return {
+        id: _Product.id_product,
+        title: _Product.product_name,
+        price: _Product.price
+      }
+    })
+}
+
+const makeGETRequest = (method, url) => (
+    new Promise((resolve) => {
+        var xhr;
+    
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) { 
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+    
+        xhr.open(method, `${API_URL}${url}`, true);
+        xhr.send();
+        xhr.onload = () => {
+            resolve(JSON.parse(xhr.responseText))
+        };
+    })
+  );
+
+  
+Vue.component('custom-button', {
+    template: `
+      <button @click="$emit('click')">
+        <slot></slot>
+      </button>
+    `
+  })
 
 Vue.component('product-item', {
     props: ['item'],
@@ -20,10 +54,22 @@ Vue.component('product-item', {
 });
 
 Vue.component('basket-card', {
-    props: ['item'],
+    data: function () {
+        return {
+          basketGoods: []
+        }
+    },
+    mounted: function () {
+        service('GET', BASKET_URL).then((products) => {
+            this.basketGoods = transformProducts(products);
+        })
+      },
     template: `
         <div class="basket">
-            <span class="basket-title">Корзина</span>
+            <div class="basket-header">
+                <slot name="header"></slot>
+            </div>
+            <slot></slot>
         </div>
     `,
 });
@@ -43,15 +89,27 @@ Vue.component('basket-goods-item', {
 const app = new Vue({
     el: '#app',
     data: {
-        products: PRODUCTS,
-        productsFiltered: PRODUCTS,
+        products: [],
+        productsFiltered: [],
         basketCardVision: false,
-        searchStr: '',
-        title: 'myTitle'
+        searchStr: ''
+    },
+    mounted: function () {
+        makeGETRequest('GET', CATALOG_URL).then((products) => {
+          const resultProducts = transformProducts(products);
+          this.products = resultProducts;
+          this.productsFiltered = resultProducts;
+        })
     },
     methods: {
         productsFilter: function () {
             this.productsFiltered = this.products.filter(({ title }) => new RegExp(this.searchStr, 'i').test(title))
+        },
+        openCard: function () {
+            this.basketCardVision = true;
+        },
+        closeCard: function () {
+            this.basketCardVision = false;
         }
     }
 })

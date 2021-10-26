@@ -113,11 +113,49 @@ button:hover {
     padding: 20px 0 0 20px;
     border-radius: 5px;
 
-    &-title {
-        width: 100%;
-        text-align: center;
+    &-header {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 5fr 1fr;
         margin-bottom: 15px;
     }
+
+    &-title {
+        text-align: center;
+        font-size: 25px;
+    }
+
+    &-btn_close {
+        display: block;
+        width: 40px;
+        height: 40px;
+        position: relative;
+    }
+
+    &-btn_close:before, &-btn_close:after {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 5px;
+        position: absolute;
+        top: 17px;
+        right: 0px;
+        background-color: darken(#e4dad2, 40%);
+        transition: background-color 650ms ease;
+        }
+
+    &-btn_close:before {
+        transform: rotate(-45deg);
+    }
+
+    &-btn_close:after {
+        transform: rotate(45deg);
+    }
+
+    &-btn_close:hover:after, &-btn_close:hover:before {
+        background-color: #000;
+    }
+
 
     &-item {
         width: 200px;

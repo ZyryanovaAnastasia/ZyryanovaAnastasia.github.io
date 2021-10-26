@@ -145,10 +145,54 @@ button:hover {
   border-radius: 5px;
 }
 
-.basket-title {
-  width: 100%;
-  text-align: center;
+.basket-header {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-columns: 5fr 1fr;
+      grid-template-columns: 5fr 1fr;
   margin-bottom: 15px;
+}
+
+.basket-title {
+  text-align: center;
+  font-size: 25px;
+}
+
+.basket-btn_close {
+  display: block;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.basket-btn_close:before, .basket-btn_close:after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 5px;
+  position: absolute;
+  top: 17px;
+  right: 0px;
+  background-color: #927258;
+  -webkit-transition: background-color 650ms ease;
+  transition: background-color 650ms ease;
+}
+
+.basket-btn_close:before {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.basket-btn_close:after {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.basket-btn_close:hover:after, .basket-btn_close:hover:before {
+  background-color: #000;
 }
 
 .basket-item {
