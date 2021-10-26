@@ -31,7 +31,7 @@
                         Cортировка
                     </custom-button>
                 </div>
-                <product-item v-for="item in productsFiltered" :item="item"></product-item>
+                <product-item v-for="item in productsFiltered" :item="item" @click="addProduct"></product-item>
             </div>
         </main>
     </div>

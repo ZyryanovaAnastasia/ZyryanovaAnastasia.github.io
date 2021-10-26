@@ -1,5 +1,6 @@
 const API_URL = 'http://localhost:8000';
 const CATALOG_URL = '/products.json';
+const ADD_PRODUCT_URL = '/api';
 const BASKET_URL = '/basket.json';
 
 const transformProducts = function(products) {
@@ -12,7 +13,7 @@ const transformProducts = function(products) {
     })
 }
 
-const makeGETRequest = (method, url) => (
+const makeGETRequest = (method, url, body) => (
     new Promise((resolve) => {
         var xhr;
     
@@ -23,7 +24,10 @@ const makeGETRequest = (method, url) => (
         }
     
         xhr.open(method, `${API_URL}${url}`, true);
-        xhr.send();
+        if (body) {
+            xhr.setRequestHeader("Content-Type", "application/json");
+        }
+        xhr.send(body);
         xhr.onload = () => {
             resolve(JSON.parse(xhr.responseText))
         };
@@ -48,7 +52,9 @@ Vue.component('product-item', {
                 <h3 class="product_list-item-title">{{ item.title }}</h3>
                 <span class="product_list-item-price">{{ item.price }}руб.</span>
             </div>
-            <button class="product_list-item-btn_add">Добавить</button>
+            <custom-button class="product_list-item-btn_add" @click="$emit('click', item)">
+                Добавить
+            </custom-button>
         </div>
     `,
 });
@@ -60,7 +66,7 @@ Vue.component('basket-card', {
         }
     },
     mounted: function () {
-        service('GET', BASKET_URL).then((products) => {
+        makeGETRequest('GET', BASKET_URL).then((products) => {
             // this.basketGoods = transformProducts(products);
         })
       },
@@ -115,6 +121,11 @@ const app = new Vue({
         },
         closeCard: function () {
             this.basketCardVision = false;
+        },
+        addProduct: function ({title, price}) {
+            makeGETRequest('PATCH', ADD_PRODUCT_URL, JSON.stringify({title, price})).then((_basketGoods) => {
+                this.basket = _basketGoods;
+            });
         }
     }
 })

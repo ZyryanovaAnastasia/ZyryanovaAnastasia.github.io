@@ -23,7 +23,7 @@ const writeItems = function (path, items) {
     })
 }
 
-const addItems = (path, item) => {
+export function addItems(path, item) {
     return new Promise((resolve, reject) => {
       readItems(path).then((items) => {
         const resultItems = [...items];
@@ -35,8 +35,4 @@ const addItems = (path, item) => {
         })
       })
     });
-  }
-
-
-  
-addItems(constants.BASKET_PATH, {id: 1,name: '100'})
+}
