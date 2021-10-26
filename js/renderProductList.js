@@ -2,7 +2,7 @@ const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-sto
 const CATALOG_URL = '/catalogData.json';
 
 function makeGETRequest(method, url) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         var xhr;
     
         if (window.XMLHttpRequest) {

@@ -14,6 +14,7 @@
 }
 
 button {
+  width: 150px;
   border: none;
   border-radius: 5px;
   -webkit-box-shadow: inset 0px -3px 0px 0px #e4dad2;
@@ -41,10 +42,6 @@ button:hover {
   color: white;
 }
 
-.main_header-cart_btn {
-  width: 150px;
-}
-
 .main_header-cart_btn:before {
   content: '\1F6D2';
 }
@@ -59,6 +56,27 @@ button:hover {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.product_list-filter {
+  width: 100%;
+  padding-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.product_list-filter input, .product_list-filter button {
+  margin-left: auto;
+}
+
+.product_list-filter button {
+  margin-top: 10px;
+  padding: 5px;
 }
 
 .product_list-item {
@@ -107,5 +125,80 @@ button:hover {
 
 .product_list-item:hover {
   background: #f0e8dd;
+}
+
+.basket {
+  width: 500px;
+  height: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  background-color: rgba(192, 177, 153, 0.9);
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px 0 0 20px;
+  border-radius: 5px;
+}
+
+.basket-header {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-columns: 5fr 1fr;
+      grid-template-columns: 5fr 1fr;
+  margin-bottom: 15px;
+}
+
+.basket-title {
+  text-align: center;
+  font-size: 25px;
+}
+
+.basket-btn_close {
+  display: block;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.basket-btn_close:before, .basket-btn_close:after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 5px;
+  position: absolute;
+  top: 17px;
+  right: 0px;
+  background-color: #927258;
+  -webkit-transition: background-color 650ms ease;
+  transition: background-color 650ms ease;
+}
+
+.basket-btn_close:before {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.basket-btn_close:after {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.basket-btn_close:hover:after, .basket-btn_close:hover:before {
+  background-color: #000;
+}
+
+.basket-item {
+  width: 200px;
+  border: 1px solid #000;
+  margin: 5px;
+  padding: 5px;
 }
 /*# sourceMappingURL=style.css.map */

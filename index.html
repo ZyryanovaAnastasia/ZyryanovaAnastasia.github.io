@@ -5,18 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="scss/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
     
 </head>
 <body>
-    <header class="main_header">
-        <h1 class="title">Список продуктов</h1>
-        <button class="main_header-cart_btn">Корзина </button>
-    </header>
-    <main class="content">
-        <div class="product_list">
-            <!-- в renderProductItem() формируется карточка товара -->
-        </div>
-    </main>
-    <script src="js/renderProductList.js"></script>
+    <div id="app">
+        <header class="main_header">
+            <h1 class="title">Список продуктов</h1>
+            <custom-button class="main_header-cart_btn" @click="openCard">
+                Корзина
+            </custom-button>
+            <basket-card v-if="basketCardVision">
+                <template v-slot:header>
+                    <span class="basket-title">Корзина</span>
+                    <a class="basket-btn_close" @click="closeCard"></a>
+                </template>
+                <basket-goods-item v-for="item in productsFiltered" :item="item"> </basket-goods-item>
+            </basket-card>
+        </header>
+        <main class="content">
+            <div class="product_list">
+                <div class="product_list-filter">
+                    <input type="text" v-model="searchStr" v-on:keyup.enter="productsFilter">
+                    <custom-button class="main_header-flter_btn" @click="productsFilter">
+                        Cортировка
+                    </custom-button>
+                </div>
+                <product-item v-for="item in productsFiltered" :item="item"></product-item>
+            </div>
+        </main>
+    </div>
+    <script src="js/vue.js"></script>
 </body>
 </html>
